@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idrink/widgets/custom_app_bar.dart';
 
 void main() {
   runApp(const MainApp());
@@ -30,41 +31,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
-        leading:
-            Navigator.canPop(context)
-                ? IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.black),
-                  onPressed: () => Navigator.pop(context),
-                )
-                : null,
-        title: SizedBox(
-          height: 40,
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Buscar...',
-              hintStyle: TextStyle(color: Colors.grey.shade600),
-              prefixIcon: const Icon(Icons.search, color: Colors.grey),
-              filled: true,
-              fillColor: Colors.grey.shade200,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25),
-                borderSide: BorderSide.none,
-              ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 10),
-            ),
-            style: const TextStyle(color: Colors.black),
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(showBackButton: false),
       body: const Center(
         child: Text('Hello World!', style: TextStyle(color: Colors.black)),
       ),
