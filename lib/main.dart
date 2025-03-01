@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idrink/widgets/carousel_widget.dart';
 import 'package:idrink/widgets/custom_app_bar.dart';
 
 void main() {
@@ -32,9 +33,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(showBackButton: false),
-      body: const Center(
-        child: Text('Hello World!', style: TextStyle(color: Colors.black)),
-      ),
+      body: Column(children: [const SizedBox(height: 20), CarouselWidget()]),
     );
   }
 }
