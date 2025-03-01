@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 
-class CarouselWidget extends StatefulWidget {
-  final List<String> images = [
-    'assets/pexels/pexels-78563786-10764538.jpg',
-    'assets/pexels/pexels-edwardeyer-1066859.jpg',
-    'assets/pexels/pexels-henry-de-guzman-72935623-10134616.jpg',
-    'assets/pexels/pexels-moises-ribeiro-121009898-11462903.jpg',
-    'assets/pexels/pexels-polina-tankilevitch-4109121.jpg',
-    'assets/pexels/pexels-tadahiro-munakata-384728139-18338973.jpg',
-  ];
+const List<String> imagePaths = [
+  'assets/pexels/pexels-78563786-10764538.jpg',
+  'assets/pexels/pexels-edwardeyer-1066859.jpg',
+  'assets/pexels/pexels-henry-de-guzman-72935623-10134616.jpg',
+  'assets/pexels/pexels-moises-ribeiro-121009898-11462903.jpg',
+  'assets/pexels/pexels-polina-tankilevitch-4109121.jpg',
+  'assets/pexels/pexels-tadahiro-munakata-384728139-18338973.jpg',
+];
 
-  CarouselWidget({super.key});
+class CarouselWidget extends StatefulWidget {
+  final List<String> images;
+  final double height;
+
+  const CarouselWidget({
+    super.key,
+    this.images = imagePaths,
+    this.height = 160,
+  });
 
   @override
   CarouselWidgetState createState() => CarouselWidgetState();
@@ -26,7 +33,7 @@ class CarouselWidgetState extends State<CarouselWidget> {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          height: 160,
+          height: widget.height,
           width: double.infinity,
           child: Swiper(
             loop: true,
