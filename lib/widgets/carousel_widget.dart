@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 
-class CarouselWidget extends StatelessWidget {
+class CarouselWidget extends StatefulWidget {
   final List<String> images = [
     'assets/pexels/pexels-78563786-10764538.jpg',
     'assets/pexels/pexels-edwardeyer-1066859.jpg',
@@ -14,34 +14,64 @@ class CarouselWidget extends StatelessWidget {
   CarouselWidget({super.key});
 
   @override
+  CarouselWidgetState createState() => CarouselWidgetState();
+}
+
+class CarouselWidgetState extends State<CarouselWidget> {
+  int currentIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 210,
-      width: double.infinity,
-      child: Swiper(
-        loop: true,
-        viewportFraction: 0.8,
-        scale: 0.9,
-        autoplay: true,
-        pagination: const SwiperPagination(
-          margin: EdgeInsets.only(top: 0),
-          builder: DotSwiperPaginationBuilder(
-            activeColor: Colors.red,
-            color: Colors.grey,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          height: 160,
+          width: double.infinity,
+          child: Swiper(
+            loop: true,
+            viewportFraction: 0.8,
+            scale: 0.9,
+            autoplay: true,
+            onIndexChanged: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            itemCount: widget.images.length,
+            itemBuilder:
+                (context, index) =>
+                    CarouselSlide(imagePath: widget.images[index]),
           ),
         ),
-        itemCount: images.length,
-        itemBuilder:
-            (context, index) => _CarouselSlide(imagePath: images[index]),
-      ),
+        const SizedBox(height: 10),
+        _buildIndicators(),
+      ],
+    );
+  }
+
+  Widget _buildIndicators() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(widget.images.length, (index) {
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          width: 8,
+          height: 8,
+          decoration: BoxDecoration(
+            color: index == currentIndex ? Colors.red : Colors.grey,
+            shape: BoxShape.circle,
+          ),
+        );
+      }),
     );
   }
 }
 
-class _CarouselSlide extends StatelessWidget {
+class CarouselSlide extends StatelessWidget {
   final String imagePath;
 
-  const _CarouselSlide({required this.imagePath});
+  const CarouselSlide({required this.imagePath, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +83,7 @@ class _CarouselSlide extends StatelessWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 10),
       child: DecoratedBox(
         decoration: decoration,
         child: ClipRRect(
