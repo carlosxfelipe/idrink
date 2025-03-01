@@ -48,12 +48,12 @@ class _CarouselSlide extends StatelessWidget {
     final decoration = BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       boxShadow: const [
-        BoxShadow(color: Colors.black45, blurRadius: 10, offset: Offset(0, 10)),
+        BoxShadow(color: Colors.black26, blurRadius: 6, offset: Offset(0, 5)),
       ],
     );
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
+      padding: const EdgeInsets.only(bottom: 20),
       child: DecoratedBox(
         decoration: decoration,
         child: ClipRRect(
