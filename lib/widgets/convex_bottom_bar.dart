@@ -1,0 +1,56 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class ConvexBottomBar extends StatelessWidget {
+  final int currentIndex;
+  final Widget child;
+
+  const ConvexBottomBar({
+    super.key,
+    required this.currentIndex,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(child: child), // Evita sobreposição com a barra
+      bottomNavigationBar: ConvexAppBar(
+        style: TabStyle.react,
+        backgroundColor: Colors.white,
+        activeColor: Colors.black,
+        color: Colors.black,
+        initialActiveIndex: currentIndex,
+        onTap: (index) {
+          if (index == currentIndex) return;
+
+          switch (index) {
+            case 0:
+              context.go('/');
+              break;
+            case 1:
+              context.go('/partnership');
+              break;
+            case 2:
+              context.go('/offers');
+              break;
+            case 3:
+              context.go('/payment');
+              break;
+            case 4:
+              context.go('/profile');
+              break;
+          }
+        },
+        items: const [
+          TabItem(icon: Icons.home, title: 'Início'),
+          TabItem(icon: Icons.handshake, title: 'Parceria'),
+          TabItem(icon: Icons.star_outline, title: 'Para Você'),
+          TabItem(icon: Icons.receipt, title: 'Faturas'),
+          TabItem(icon: Icons.person, title: 'Perfil'),
+        ],
+      ),
+    );
+  }
+}

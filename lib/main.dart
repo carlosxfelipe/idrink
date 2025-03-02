@@ -30,13 +30,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(showBackButton: false),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          CarouselWidget(indicatorColor: Colors.red),
-        ],
+    return const ConvexBottomBar(
+      currentIndex: 0,
+      child: Scaffold(
+        appBar: CustomAppBar(showBackButton: false),
+        body: Column(
+          children: [
+            SizedBox(height: 20),
+            CarouselWidget(indicatorColor: Colors.red),
+          ],
+        ),
       ),
     );
   }
