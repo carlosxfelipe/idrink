@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:idrink/routes/router.dart';
+import 'package:idrink/theme/theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,14 +13,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.red,
-          surface: Colors.white,
-        ),
-        scaffoldBackgroundColor: Colors.white,
-      ),
+      theme: AppTheme.lightTheme,
+      // darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
       routerConfig: router,
     );
   }
