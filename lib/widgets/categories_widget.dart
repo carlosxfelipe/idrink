@@ -59,6 +59,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: GridView.builder(
@@ -81,21 +83,24 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
                   height: 56,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: isDarkMode ? Colors.grey[900] : Colors.grey[200],
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Transform.rotate(
                     angle: selectedIndex == index ? _animation.value : 0,
                     child: Icon(
                       categories[index]['icon'],
-                      color: Colors.black87,
+                      color: isDarkMode ? Colors.white : Colors.black87,
                     ),
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   categories[index]['label'],
-                  style: const TextStyle(fontSize: 14),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: isDarkMode ? Colors.white : Colors.black,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
