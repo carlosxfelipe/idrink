@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: ProfileInfo(), // Mantém informações do usuário
+                child: ProfileInfo(),
               ),
               const SizedBox(height: 20),
             ],
@@ -68,7 +68,18 @@ class ProfileInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ProfileText(title: "Nome:", value: "Carlos Felipe Araújo"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const ProfileText(title: "Nome:", value: "Carlos Felipe Araújo"),
+              IconButton(
+                icon: const Icon(Icons.edit, color: Colors.black38),
+                onPressed: () {
+                  // Implementar lógica de edição do nome
+                },
+              ),
+            ],
+          ),
           const SizedBox(height: 10),
           const ProfileText(title: "E-mail:", value: "carlosxfelipe@gmail.com"),
           const SizedBox(height: 10),
@@ -79,55 +90,6 @@ class ProfileInfo extends StatelessWidget {
           const ProfileText(title: "Data de Nascimento:", value: "03/10/1987"),
           const SizedBox(height: 20),
 
-          // Botão para editar perfil
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 12),
-              ),
-              onPressed: () {
-                // Implementar lógica de edição do perfil
-              },
-              child: const Text(
-                "Editar Perfil",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 10),
-
-          // Botão para alterar senha
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 12),
-              ),
-              onPressed: () {
-                // Implementar lógica de alteração de senha
-              },
-              child: const Text(
-                "Alterar Senha",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 10),
-
-          // Botão de Logout
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
@@ -142,9 +104,16 @@ class ProfileInfo extends StatelessWidget {
               onPressed: () {
                 // Implementar lógica de logout
               },
-              child: const Text(
-                "Sair da Conta",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Sair da Conta",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(width: 10),
+                  const Icon(Icons.logout, size: 20, color: Colors.white),
+                ],
               ),
             ),
           ),
