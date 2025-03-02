@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:idrink/routes/router.dart';
 import 'package:idrink/theme/theme.dart';
 import 'package:idrink/theme/theme_provider.dart';
@@ -19,13 +20,18 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDarkMode = themeProvider.themeMode == ThemeMode.dark;
 
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: themeProvider.themeMode,
-      routerConfig: router,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value:
+          isDarkMode ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: themeProvider.themeMode,
+        routerConfig: router,
+      ),
     );
   }
 }
