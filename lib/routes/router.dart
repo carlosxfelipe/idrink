@@ -1,12 +1,28 @@
 import 'package:go_router/go_router.dart';
 import 'package:idrink/screens.dart';
 
+class NoTransitionPage extends CustomTransitionPage {
+  NoTransitionPage({required super.child})
+    : super(
+        transitionDuration: Duration.zero,
+        reverseTransitionDuration: Duration.zero,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return child;
+        },
+      );
+}
+
 final GoRouter router = GoRouter(
   routes: [
-    GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+    GoRoute(
+      path: '/',
+      pageBuilder:
+          (context, state) => NoTransitionPage(child: const HomeScreen()),
+    ),
     GoRoute(
       path: '/profile',
-      builder: (context, state) => const ProfileScreen(),
+      pageBuilder:
+          (context, state) => NoTransitionPage(child: const ProfileScreen()),
     ),
   ],
 );
