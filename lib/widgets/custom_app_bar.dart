@@ -56,21 +56,29 @@ class AddressAppBarContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final iconColor = theme.colorScheme.onSurface;
+
     return GestureDetector(
       onTap: onTap,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            address,
-            style: TextStyle(
-              color: theme.colorScheme.onSurface,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+          Icon(Icons.location_on, color: iconColor, size: 20),
+          const SizedBox(width: 6),
+          Flexible(
+            child: Text(
+              address,
+              style: TextStyle(
+                color: theme.colorScheme.onSurface,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          const SizedBox(width: 8),
-          Icon(Icons.expand_more, color: theme.colorScheme.onSurface),
+          const SizedBox(width: 6),
+          Icon(Icons.expand_more, color: iconColor, size: 20),
         ],
       ),
     );
