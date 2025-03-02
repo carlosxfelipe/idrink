@@ -38,7 +38,10 @@ class ProfileAvatar extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 4),
+          border: Border.all(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            width: 4,
+          ),
           boxShadow: [
             BoxShadow(
               color: const Color.fromRGBO(0, 0, 0, 0.2),
@@ -63,10 +66,13 @@ class ProfileInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -86,37 +92,45 @@ class ProfileInfo extends StatelessWidget {
             children: [
               const ProfileText(title: "Nome:", value: "Carlos Felipe Araújo"),
               IconButton(
-                icon: const Icon(Icons.edit, color: Colors.black38),
+                icon: Icon(
+                  Icons.edit,
+                  color: isDarkMode ? Colors.white : Colors.black38,
+                ),
                 onPressed: () {
                   // Implementar lógica de edição do nome
                 },
               ),
             ],
           ),
-          const Divider(thickness: 1, color: Colors.grey),
+          Divider(thickness: 1, color: Theme.of(context).dividerColor),
           const ProfileText(title: "E-mail:", value: "carlosxfelipe@gmail.com"),
-          const Divider(thickness: 1, color: Colors.grey),
+          Divider(thickness: 1, color: Theme.of(context).dividerColor),
           const ProfileText(title: "Telefone:", value: "(85) 99950-2195"),
-          const Divider(thickness: 1, color: Colors.grey),
+          Divider(thickness: 1, color: Theme.of(context).dividerColor),
           const ProfileText(title: "Localização:", value: "Fortaleza, CE"),
-          const Divider(thickness: 1, color: Colors.grey),
+          Divider(thickness: 1, color: Theme.of(context).dividerColor),
           const ProfileText(title: "Data de Nascimento:", value: "03/10/1987"),
           const SizedBox(height: 20),
           ListTile(
-            leading: const Icon(Icons.settings, color: Colors.grey),
+            leading: Icon(
+              Icons.settings,
+              color: Theme.of(context).iconTheme.color,
+            ),
             title: const Text("Configurações"),
-            trailing: const Icon(
+            trailing: Icon(
               Icons.arrow_forward_ios,
               size: 18,
-              color: Colors.grey,
+              color: Theme.of(context).iconTheme.color,
             ),
             onTap: () {
               // Implementar lógica de configurações
             },
           ),
-
           ListTile(
-            leading: const Icon(Icons.nightlight_round, color: Colors.grey),
+            leading: Icon(
+              Icons.nightlight_round,
+              color: Theme.of(context).iconTheme.color,
+            ),
             title: const Text("Modo Escuro"),
             trailing: Switch(
               value: false,
@@ -125,14 +139,16 @@ class ProfileInfo extends StatelessWidget {
               },
             ),
           ),
-
           ListTile(
-            leading: const Icon(Icons.share, color: Colors.grey),
+            leading: Icon(
+              Icons.share,
+              color: Theme.of(context).iconTheme.color,
+            ),
             title: const Text("Compartilhar App"),
-            trailing: const Icon(
+            trailing: Icon(
               Icons.arrow_forward_ios,
               size: 18,
-              color: Colors.grey,
+              color: Theme.of(context).iconTheme.color,
             ),
             onTap: () {
               // Implementar lógica de compartilhamento
