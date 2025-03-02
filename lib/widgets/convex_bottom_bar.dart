@@ -35,7 +35,7 @@ class ConvexBottomBar extends StatelessWidget {
               context.go('/');
               break;
             case 1:
-              // context.go('/search');
+              context.go('/search');
               break;
             case 2:
               // context.go('/orders');
