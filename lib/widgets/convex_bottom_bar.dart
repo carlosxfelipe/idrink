@@ -20,10 +20,12 @@ class ConvexBottomBar extends StatelessWidget {
     return Scaffold(
       body: SafeArea(child: child),
       bottomNavigationBar: ConvexAppBar(
+        height: 60,
         style: TabStyle.react,
-        backgroundColor: theme.colorScheme.surface,
+        backgroundColor:
+            isDarkMode ? Colors.grey[900] : theme.colorScheme.surface,
         activeColor: isDarkMode ? Colors.white : Colors.black,
-        color: isDarkMode ? Colors.white : Colors.black,
+        color: isDarkMode ? Colors.white70 : Colors.black54,
         initialActiveIndex: currentIndex,
         onTap: (index) {
           if (index == currentIndex) return;

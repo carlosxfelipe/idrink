@@ -11,8 +11,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final isDarkMode = theme.brightness == Brightness.dark;
 
     return AppBar(
-      backgroundColor: isDarkMode ? theme.colorScheme.surface : Colors.white,
-      surfaceTintColor: isDarkMode ? theme.colorScheme.surface : Colors.white,
+      backgroundColor: theme.colorScheme.surface,
+      surfaceTintColor: theme.colorScheme.surface,
       leading:
           showBackButton && Navigator.canPop(context)
               ? IconButton(
@@ -29,27 +29,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           decoration: InputDecoration(
             hintText: 'Buscar...',
             hintStyle: TextStyle(
-              color: theme.colorScheme.onSurface.withOpacity(0.6),
+              color: theme.colorScheme.onSurface.withAlpha(153),
             ),
             prefixIcon: Icon(
               Icons.search,
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withAlpha(179),
             ),
             filled: true,
-            fillColor: isDarkMode ? theme.colorScheme.surface : Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade300),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade300),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade600),
-            ),
+            fillColor: isDarkMode ? Colors.grey.shade800 : Colors.grey.shade200,
             contentPadding: const EdgeInsets.symmetric(vertical: 12),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: BorderSide.none,
+            ),
           ),
           style: TextStyle(color: theme.colorScheme.onSurface),
         ),
