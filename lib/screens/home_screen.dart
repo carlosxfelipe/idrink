@@ -9,7 +9,10 @@ class HomeScreen extends StatelessWidget {
     return const ConvexBottomBar(
       currentIndex: 0,
       child: Scaffold(
-        appBar: CustomAppBar(showBackButton: false),
+        appBar: CustomAppBar(
+          showBackButton: false,
+          address: "Rua das Flores, 123",
+        ),
         body: Column(
           children: [
             SizedBox(height: 20),
