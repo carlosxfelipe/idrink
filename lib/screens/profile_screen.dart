@@ -51,7 +51,10 @@ class ProfileAvatar extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color.fromRGBO(0, 0, 0, 0.2),
+              color:
+                  isDarkMode
+                      ? const Color.fromRGBO(255, 255, 255, 0.5)
+                      : const Color.fromRGBO(0, 0, 0, 0.2),
               blurRadius: 8,
               spreadRadius: 2,
             ),
