@@ -19,12 +19,21 @@ class HomeScreen extends StatelessWidget {
           onAddressTap: _handleAddressTap,
         ),
         body: Column(
-          children: const [
-            WelcomeWidget(),
-            SizedBox(height: 20),
-            CarouselWidget(indicatorColor: Colors.red),
-            SizedBox(height: 20),
-            CategoriesWidget(),
+          children: [
+            const WelcomeWidget(),
+            const SizedBox(height: 10),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    CarouselWidget(indicatorColor: Colors.red),
+                    SizedBox(height: 10),
+                    CategoriesWidget(),
+                    SizedBox(height: 300),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
