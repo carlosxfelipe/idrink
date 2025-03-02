@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idrink/routes/router.dart';
 import 'package:idrink/widgets.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -20,7 +21,7 @@ class MainApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const HomeScreen(),
+      routerConfig: router,
     );
   }
 }
