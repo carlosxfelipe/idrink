@@ -9,27 +9,18 @@ class ProfileScreen extends StatelessWidget {
     return ConvexBottomBar(
       currentIndex: 4,
       child: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color(0xFFE52D27), Color(0xFFB31217)],
-            ),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(height: 40),
-                const ProfileAvatar(),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: ProfileInfo(),
-                ),
-                const SizedBox(height: 60),
-              ],
-            ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 40),
+              const ProfileAvatar(),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ProfileInfo(),
+              ),
+              const SizedBox(height: 60),
+            ],
           ),
         ),
       ),
@@ -58,7 +49,9 @@ class ProfileAvatar extends StatelessWidget {
         ),
         child: const CircleAvatar(
           radius: 60,
-          // backgroundImage: AssetImage('assets/profile-placeholder.png'),
+          backgroundImage: NetworkImage(
+            "https://avatars.githubusercontent.com/u/85801709?s=400&u=01cce0318ea853ce1a133699bc6b2af1919094d6&v=4",
+          ),
         ),
       ),
     );
