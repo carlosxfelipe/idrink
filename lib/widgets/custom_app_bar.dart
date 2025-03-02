@@ -7,13 +7,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
     return AppBar(
-      backgroundColor: Colors.white,
-      surfaceTintColor: Colors.white,
+      backgroundColor: isDarkMode ? theme.colorScheme.surface : Colors.white,
+      surfaceTintColor: isDarkMode ? theme.colorScheme.surface : Colors.white,
       leading:
           showBackButton && Navigator.canPop(context)
               ? IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: theme.colorScheme.onSurface,
+                ),
                 onPressed: () => Navigator.pop(context),
               )
               : null,
@@ -22,10 +28,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: TextField(
           decoration: InputDecoration(
             hintText: 'Buscar...',
-            hintStyle: TextStyle(color: Colors.grey.shade600),
-            prefixIcon: const Icon(Icons.search, color: Colors.grey),
+            hintStyle: TextStyle(
+              color: theme.colorScheme.onSurface.withOpacity(0.6),
+            ),
+            prefixIcon: Icon(
+              Icons.search,
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
+            ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: isDarkMode ? theme.colorScheme.surface : Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Colors.grey.shade300),
@@ -36,16 +47,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: BorderSide(color: theme.colorScheme.primary),
             ),
             contentPadding: const EdgeInsets.symmetric(vertical: 12),
           ),
-          style: const TextStyle(color: Colors.black),
+          style: TextStyle(color: theme.colorScheme.onSurface),
         ),
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.notifications, color: Colors.black),
+          icon: Icon(Icons.notifications, color: theme.colorScheme.onSurface),
           onPressed: () {},
         ),
       ],
