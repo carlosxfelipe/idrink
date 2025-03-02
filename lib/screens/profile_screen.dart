@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:idrink/theme/theme_provider.dart';
 import 'package:idrink/widgets.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -71,6 +73,8 @@ class ProfileInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     final theme = Theme.of(context);
     final isDarkMode = theme.brightness == Brightness.dark;
 
@@ -138,9 +142,9 @@ class ProfileInfo extends StatelessWidget {
             ),
             title: const Text("Modo Escuro"),
             trailing: Switch(
-              value: false,
+              value: isDarkMode,
               onChanged: (value) {
-                // Implementar lógica de modo escuro
+                themeProvider.toggleTheme(value);
               },
             ),
           ),
