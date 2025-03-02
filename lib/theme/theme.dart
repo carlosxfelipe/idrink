@@ -7,11 +7,13 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.red,
         surface: Colors.white,
+        onSurface: Colors.black,
       ),
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(fontSize: 18, color: Colors.black),
@@ -26,8 +28,15 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.red,
         brightness: Brightness.dark,
+        surface: const Color(0xFF121212),
+        onSurface: Colors.white,
       ),
-      scaffoldBackgroundColor: Colors.black,
+      scaffoldBackgroundColor: const Color(0xFF121212),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xFF121212),
+        foregroundColor: Colors.white,
+        elevation: 0,
+      ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(fontSize: 18, color: Colors.white),
         bodyMedium: TextStyle(fontSize: 16, color: Colors.white),
