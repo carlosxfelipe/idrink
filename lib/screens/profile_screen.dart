@@ -33,13 +33,18 @@ class ProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Center(
       child: Container(
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: Theme.of(context).scaffoldBackgroundColor,
+            color:
+                isDarkMode
+                    ? Colors.white70
+                    : Theme.of(context).scaffoldBackgroundColor,
             width: 4,
           ),
           boxShadow: [
