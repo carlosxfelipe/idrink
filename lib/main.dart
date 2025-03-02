@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:idrink/routes/router.dart';
 import 'package:idrink/theme/theme.dart';
 import 'package:idrink/theme/theme_provider.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(
@@ -21,6 +21,14 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.themeMode == ThemeMode.dark;
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.red,
+        systemNavigationBarIconBrightness:
+            isDarkMode ? Brightness.light : Brightness.dark,
+      ),
+    );
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value:
