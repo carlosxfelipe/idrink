@@ -13,11 +13,13 @@ const List<String> imagePaths = [
 class CarouselWidget extends StatefulWidget {
   final List<String> images;
   final double height;
+  final Color indicatorColor;
 
   const CarouselWidget({
     super.key,
     this.images = imagePaths,
     this.height = 160,
+    this.indicatorColor = Colors.blue,
   });
 
   @override
@@ -66,7 +68,7 @@ class CarouselWidgetState extends State<CarouselWidget> {
           width: 8,
           height: 8,
           decoration: BoxDecoration(
-            color: index == currentIndex ? Colors.red : Colors.grey,
+            color: index == currentIndex ? widget.indicatorColor : Colors.grey,
             shape: BoxShape.circle,
           ),
         );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idrink/widgets/carousel_widget.dart';
-import 'package:idrink/widgets/custom_app_bar.dart';
+import 'package:idrink/widgets/widgets.dart';
 
 void main() {
   runApp(const MainApp());
@@ -33,7 +32,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(showBackButton: false),
-      body: Column(children: [const SizedBox(height: 20), CarouselWidget()]),
+      body: Column(
+        children: [
+          const SizedBox(height: 20),
+          CarouselWidget(indicatorColor: Colors.red),
+        ],
+      ),
     );
   }
 }
