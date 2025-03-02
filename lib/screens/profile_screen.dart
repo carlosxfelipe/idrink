@@ -9,7 +9,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConvexBottomBar(
-      currentIndex: 4,
+      currentIndex: 3,
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(

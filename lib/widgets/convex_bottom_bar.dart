@@ -35,24 +35,20 @@ class ConvexBottomBar extends StatelessWidget {
               context.go('/');
               break;
             case 1:
-              context.go('/partnership');
+              // context.go('/search');
               break;
             case 2:
-              context.go('/offers');
+              // context.go('/orders');
               break;
             case 3:
-              context.go('/payment');
-              break;
-            case 4:
               context.go('/profile');
               break;
           }
         },
         items: const [
           TabItem(icon: Icons.home, title: 'Início'),
-          TabItem(icon: Icons.handshake, title: 'Parceria'),
-          TabItem(icon: Icons.star_outline, title: 'Para Você'),
-          TabItem(icon: Icons.receipt, title: 'Faturas'),
+          TabItem(icon: Icons.search, title: 'Busca'),
+          TabItem(icon: Icons.shopping_bag, title: 'Pedidos'),
           TabItem(icon: Icons.person, title: 'Perfil'),
         ],
       ),
