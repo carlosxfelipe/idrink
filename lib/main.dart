@@ -22,16 +22,14 @@ class MainApp extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.themeMode == ThemeMode.dark;
 
-    // Atualiza a barra de status após a reconstrução do widget
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness:
-              isDarkMode ? Brightness.light : Brightness.dark,
-        ),
-      );
-    });
+    // Atualiza a barra de status conforme o tema
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness:
+            isDarkMode ? Brightness.light : Brightness.dark,
+      ),
+    );
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value:
