@@ -14,13 +14,16 @@ class ConvexBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
     return Scaffold(
-      body: SafeArea(child: child), // Evita sobreposição com a barra
+      body: SafeArea(child: child),
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.react,
-        backgroundColor: Colors.white,
-        activeColor: Colors.black,
-        color: Colors.black,
+        backgroundColor: theme.colorScheme.surface,
+        activeColor: theme.colorScheme.primary,
+        color: isDarkMode ? Colors.white : Colors.black,
         initialActiveIndex: currentIndex,
         onTap: (index) {
           if (index == currentIndex) return;
