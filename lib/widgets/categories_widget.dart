@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({super.key});
@@ -7,8 +8,11 @@ class CategoriesWidget extends StatefulWidget {
   State<CategoriesWidget> createState() => _CategoriesWidgetState();
 }
 
-class _CategoriesWidgetState extends State<CategoriesWidget> {
+class _CategoriesWidgetState extends State<CategoriesWidget>
+    with SingleTickerProviderStateMixin {
   int? selectedIndex;
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   final List<Map<String, dynamic>> categories = [
     {'icon': Icons.fastfood, 'label': 'Restaurantes'},
@@ -20,6 +24,38 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     {'icon': Icons.pets, 'label': 'Pet Shops'},
     {'icon': Icons.local_drink, 'label': 'Bebidas'},
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+    _animation = TweenSequence<double>([
+      TweenSequenceItem(tween: Tween(begin: 0, end: pi / 8), weight: 1),
+      TweenSequenceItem(tween: Tween(begin: pi / 8, end: -pi / 8), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: -pi / 8, end: pi / 16), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: pi / 16, end: 0), weight: 1),
+    ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
+    _controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _onCategoryTap(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+    _controller.forward(from: 0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,29 +71,31 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         ),
         itemCount: categories.length,
         itemBuilder: (context, index) {
-          final isSelected = selectedIndex == index;
-
           return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
+            onTap: () => _onCategoryTap(index),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CircleAvatar(
-                  backgroundColor: isSelected ? Colors.red : Colors.grey[200],
-                  radius: 28,
-                  child: Icon(
-                    categories[index]['icon'],
-                    color: isSelected ? Colors.white : Colors.black87,
+                Container(
+                  width: 56,
+                  height: 56,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Transform.rotate(
+                    angle: selectedIndex == index ? _animation.value : 0,
+                    child: Icon(
+                      categories[index]['icon'],
+                      color: Colors.black87,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   categories[index]['label'],
-                  style: const TextStyle(fontSize: 12),
+                  style: const TextStyle(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
               ],
