@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idrink/widgets/widgets.dart';
+import 'package:idrink/widgets.dart';
 
 void main() {
   runApp(const MainApp());
