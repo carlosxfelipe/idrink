@@ -27,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ProfileInfo(),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 60),
               ],
             ),
           ),
@@ -86,13 +86,14 @@ class ProfileInfo extends StatelessWidget {
       ),
       margin: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const ProfileText(title: "Nome:", value: "Carlos Felipe Araújo"),
               IconButton(
-                icon: const Icon(Icons.edit, color: Colors.blue),
+                icon: const Icon(Icons.edit, color: Colors.black38),
                 onPressed: () {
                   // Implementar lógica de edição do nome
                 },
