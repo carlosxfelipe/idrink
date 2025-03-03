@@ -98,7 +98,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
                 Text(
                   categories[index]['label'],
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 13,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                   textAlign: TextAlign.center,
