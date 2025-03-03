@@ -89,7 +89,7 @@ class ProductCard extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'R\$ ${pricePerUnit.toStringAsFixed(2)}',
+                              'R\$ ${pricePerUnit.toStringAsFixed(2).replaceAll('.', ',')}',
                               style: Theme.of(
                                 context,
                               ).textTheme.bodyLarge?.copyWith(
@@ -104,7 +104,10 @@ class ProductCard extends StatelessWidget {
                                 vertical: 4,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.green.withAlpha(50),
+                                color:
+                                    isDarkMode
+                                        ? Colors.green.shade100
+                                        : Colors.green.withAlpha(50),
                                 borderRadius: BorderRadius.circular(24),
                               ),
                               child: Row(
@@ -113,16 +116,22 @@ class ProductCard extends StatelessWidget {
                                   Icon(
                                     Icons.shopping_cart,
                                     size: 16,
-                                    color: Colors.green.shade800,
+                                    color:
+                                        isDarkMode
+                                            ? Colors.green.shade900
+                                            : Colors.green.shade800,
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    'R\$ ${totalPrice.toStringAsFixed(2)}',
+                                    'R\$ ${totalPrice.toStringAsFixed(2).replaceAll('.', ',')}',
                                     style: Theme.of(
                                       context,
                                     ).textTheme.bodyMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.green.shade800,
+                                      color:
+                                          isDarkMode
+                                              ? Colors.green.shade900
+                                              : Colors.green.shade800,
                                     ),
                                   ),
                                 ],
