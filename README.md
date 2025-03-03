@@ -2,6 +2,10 @@
 
 Bem-vindo ao **iDrink**! 🍹
 
+<p align="center">
+  <img src="./647shots_so.png" alt="Preview do Projeto" />
+</p>
+
 ## Sobre o Projeto
 
 Este projeto foi criado porque eu estava entediado e não queria esquecer como era codar no Flutter. Não há grandes pretensões aqui, apenas uma maneira de manter a prática e experimentar ideias.
