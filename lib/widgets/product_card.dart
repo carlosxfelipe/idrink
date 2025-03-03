@@ -22,14 +22,23 @@ class ProductCard extends StatelessWidget {
     required this.onAdd,
   });
 
+  double get totalPrice => pricePerUnit * quantity;
+
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textColor = colorScheme.onSurface;
+    final borderColor = colorScheme.primary;
+    final iconColor = colorScheme.onSurface;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        color: Colors.grey[100],
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          border: Border.all(color: borderColor, width: 2),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -54,8 +63,12 @@ class ProductCard extends StatelessWidget {
                       children: [
                         Text(
                           productName,
-                          style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: textColor,
+                          ),
                         ),
                         const SizedBox(height: 4),
                         Row(
@@ -79,8 +92,39 @@ class ProductCard extends StatelessWidget {
                           style: Theme.of(
                             context,
                           ).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            color: textColor,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.green.withAlpha(50),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.shopping_cart,
+                                size: 16,
+                                color: Colors.green.shade800,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                'Total: R\$ ${totalPrice.toStringAsFixed(2)}',
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.green.shade800,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -95,9 +139,9 @@ class ProductCard extends StatelessWidget {
                   Row(
                     children: [
                       IconButton(
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.remove_circle_outline,
-                          color: Colors.black,
+                          color: iconColor,
                         ),
                         onPressed: onDecrement,
                       ),
@@ -111,14 +155,16 @@ class ProductCard extends StatelessWidget {
                         ),
                         child: Text(
                           '$quantity',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: textColor,
+                          ),
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(
-                          Icons.add_circle_outline,
-                          color: Colors.black,
-                        ),
+                        icon: Icon(Icons.add_circle_outline, color: iconColor),
                         onPressed: onIncrement,
                       ),
                     ],
@@ -126,7 +172,7 @@ class ProductCard extends StatelessWidget {
                   ElevatedButton(
                     onPressed: onAdd,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red.shade800,
+                      backgroundColor: colorScheme.primary,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
