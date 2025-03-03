@@ -58,6 +58,11 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
+    final List<Color> gradientColors =
+        isDarkMode
+            ? [Colors.blue.shade700, Colors.tealAccent.shade700]
+            : [Colors.purple.shade300, Colors.pinkAccent.shade200];
+
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -67,33 +72,28 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
             width: double.infinity,
             height: 55,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors:
-                    isDarkMode
-                        ? [Colors.blue.shade700, Colors.tealAccent.shade700]
-                        : [Colors.purple.shade300, Colors.pinkAccent.shade200],
-                begin: Alignment(-1 + _controller.value, 0),
-                end: Alignment(_controller.value, 0),
-              ),
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withAlpha(25),
-                  blurRadius: 6,
-                  offset: const Offset(0, 4),
-                ),
-              ],
             ),
             child: Center(
               child: AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
                 opacity: _opacity,
-                child: Text(
-                  _texts[_currentIndex],
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                child: ShaderMask(
+                  shaderCallback: (bounds) {
+                    return LinearGradient(
+                      colors: gradientColors,
+                      begin: Alignment(-1 + _controller.value, 0),
+                      end: Alignment(_controller.value, 0),
+                    ).createShader(bounds);
+                  },
+                  child: Text(
+                    _texts[_currentIndex],
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white, // Necessário para o ShaderMask
+                    ),
                   ),
                 ),
               ),
