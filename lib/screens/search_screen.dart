@@ -15,9 +15,7 @@ class _SearchScreenState extends State<SearchScreen> {
       currentIndex: 1,
       child: Scaffold(
         appBar: CustomAppBar(showBackButton: false),
-        body: Column(
-          children: const [SizedBox(height: 10), AnimatedGradientHeader()],
-        ),
+        body: Column(children: const [SizedBox(height: 10)]),
       ),
     );
   }

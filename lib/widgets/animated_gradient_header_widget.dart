@@ -51,17 +51,21 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.red, Colors.amber],
+                colors:
+                    isDarkMode
+                        ? [Colors.blue, Colors.greenAccent]
+                        : [Colors.red, Colors.amber],
                 begin: Alignment(-1 + _controller.value, 0),
                 end: Alignment(_controller.value, 0),
               ),
