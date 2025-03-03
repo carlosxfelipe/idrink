@@ -86,52 +86,56 @@ class ProductCard extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          'R\$ ${pricePerUnit.toStringAsFixed(2)}',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: textColor,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.green.withAlpha(50),
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.shopping_cart,
-                                size: 16,
-                                color: Colors.green.shade800,
+                        Row(
+                          children: [
+                            Text(
+                              'R\$ ${pricePerUnit.toStringAsFixed(2)}',
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: textColor,
                               ),
-                              const SizedBox(width: 4),
-                              Text(
-                                'Total: R\$ ${totalPrice.toStringAsFixed(2)}',
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodyMedium?.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.green.shade800,
-                                ),
+                            ),
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 4,
                               ),
-                            ],
-                          ),
+                              decoration: BoxDecoration(
+                                color: Colors.green.withAlpha(50),
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.shopping_cart,
+                                    size: 16,
+                                    color: Colors.green.shade800,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    'R\$ ${totalPrice.toStringAsFixed(2)}',
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.bodyMedium?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.green.shade800,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
