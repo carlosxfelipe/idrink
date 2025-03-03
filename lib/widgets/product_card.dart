@@ -264,8 +264,8 @@ class ProductActions extends StatelessWidget {
             shadowColor: Colors.black26,
             elevation: 4,
           ).copyWith(
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.pressed)) {
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.pressed)) {
                 return Colors.red.shade700;
               }
               return colorScheme.primary;
