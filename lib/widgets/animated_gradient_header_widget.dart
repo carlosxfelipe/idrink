@@ -71,6 +71,28 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
+                shadows: [
+                  Shadow(
+                    offset: Offset(0.5, 0.5),
+                    blurRadius: 3,
+                    color: Colors.black,
+                  ),
+                  Shadow(
+                    offset: Offset(-0.5, -0.5),
+                    blurRadius: 3,
+                    color: Colors.black,
+                  ),
+                  Shadow(
+                    offset: Offset(0.5, -0.5),
+                    blurRadius: 3,
+                    color: Colors.black,
+                  ),
+                  Shadow(
+                    offset: Offset(-0.5, 0.5),
+                    blurRadius: 3,
+                    color: Colors.black,
+                  ),
+                ],
               ),
             ),
           ),
