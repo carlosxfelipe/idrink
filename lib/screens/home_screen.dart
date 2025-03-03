@@ -67,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     const CarouselWidget(indicatorColor: Colors.red),
                     const SizedBox(height: 10),
                     const CategoriesWidget(),
-                    const AnimatedGradientHeader(),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
