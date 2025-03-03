@@ -59,7 +59,7 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            height: 60,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors:
