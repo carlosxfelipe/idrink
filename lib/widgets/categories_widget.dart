@@ -60,16 +60,20 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final iconSize = screenWidth > 600 ? 72.0 : 56.0;
+    final fontSize = screenWidth > 600 ? 16.0 : 13.0;
+    final spacing = screenWidth > 600 ? 12.0 : 8.0;
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 120,
+          crossAxisSpacing: spacing,
+          mainAxisSpacing: spacing,
         ),
         itemCount: categories.length,
         itemBuilder: (context, index) {
@@ -79,8 +83,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: 56,
-                  height: 56,
+                  width: iconSize,
+                  height: iconSize,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: isDarkMode ? Colors.grey[900] : Colors.grey[200],
@@ -90,6 +94,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
                     angle: selectedIndex == index ? _animation.value : 0,
                     child: Icon(
                       categories[index]['icon'],
+                      size: iconSize * 0.6,
                       color: isDarkMode ? Colors.white : Colors.black87,
                     ),
                   ),
@@ -98,7 +103,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget>
                 Text(
                   categories[index]['label'],
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: fontSize,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                   textAlign: TextAlign.center,
