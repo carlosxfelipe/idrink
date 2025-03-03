@@ -3,7 +3,7 @@
 Bem-vindo ao **iDrink**! 🍹
 
 <p align="center">
-  <img src="./647shots_so.png" alt="Preview do Projeto" />
+  <img src="./605shots_so.png" alt="Preview do Projeto" />
 </p>
 
 ## Sobre o Projeto
