@@ -234,10 +234,17 @@ class ProductActions extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 4),
               alignment: Alignment.center,
               decoration: BoxDecoration(
+                color: Colors.white,
                 border: Border.all(color: Colors.grey.shade400),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text('$quantity'),
+              child: Text(
+                '$quantity',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
             IconButton(
               icon: Icon(Icons.add_circle_outline, color: iconColor),
