@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
             colors:
                 isDarkMode
                     ? [Colors.grey[900]!, Colors.black]
-                    : [Colors.grey[200]!, Colors.white],
+                    : [Colors.white, Colors.grey[200]!],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
