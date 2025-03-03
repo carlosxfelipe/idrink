@@ -31,8 +31,15 @@ class ProductCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Container(
         decoration: BoxDecoration(
-          color: isDarkMode ? Colors.grey[900] : Colors.grey[200],
           borderRadius: BorderRadius.circular(12),
+          gradient: LinearGradient(
+            colors:
+                isDarkMode
+                    ? [Colors.grey[900]!, Colors.black]
+                    : [Colors.grey[200]!, Colors.white],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
