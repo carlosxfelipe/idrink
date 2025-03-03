@@ -20,12 +20,16 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
   Widget build(BuildContext context) {
     if (!_isVisible) return const SizedBox.shrink();
 
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final backgroundColor = isDarkMode ? Colors.grey[800]! : Colors.grey[100]!;
+    final textColor = Theme.of(context).colorScheme.onSurface;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.grey.shade100,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
@@ -34,29 +38,30 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
             Expanded(
               child: Text(
                 "O que achou dessas recomendações?",
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  color: textColor,
+                ),
               ),
             ),
             Row(
               children: [
                 IconButton(
-                  icon: const Icon(Icons.thumb_up_outlined),
+                  icon: Icon(Icons.thumb_up_outlined, color: textColor),
                   onPressed: () {
                     debugPrint("Gostei");
                     _hideWidget();
                   },
                 ),
                 IconButton(
-                  icon: const Icon(Icons.thumb_down_outlined),
+                  icon: Icon(Icons.thumb_down_outlined, color: textColor),
                   onPressed: () {
                     debugPrint("Não gostei");
                     _hideWidget();
                   },
                 ),
                 IconButton(
-                  icon: const Icon(Icons.close),
+                  icon: Icon(Icons.close, color: textColor),
                   onPressed: _hideWidget,
                 ),
               ],
