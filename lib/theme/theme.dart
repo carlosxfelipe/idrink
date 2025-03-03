@@ -6,6 +6,9 @@ class AppTheme {
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.red,
+        primary: Colors.red.shade800,
+        onPrimary: Colors.white,
+        secondary: Colors.red.shade600,
         surface: Colors.white,
         onSurface: Colors.black,
       ),
@@ -28,6 +31,9 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.red,
         brightness: Brightness.dark,
+        primary: Colors.red.shade700,
+        onPrimary: Colors.white,
+        secondary: Colors.red.shade500,
         surface: const Color(0xFF121212),
         onSurface: Colors.white,
       ),
