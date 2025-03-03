@@ -166,6 +166,8 @@ class PriceTag extends StatelessWidget {
         const SizedBox(width: 8),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          constraints: const BoxConstraints(minWidth: 130),
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             color:
                 isDarkMode
@@ -256,11 +258,42 @@ class ProductActions extends StatelessWidget {
           onPressed: onAdd,
           style: ElevatedButton.styleFrom(
             backgroundColor: colorScheme.primary,
+            foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            minimumSize: const Size(150, 48),
+            shadowColor: Colors.black26,
+            elevation: 4,
+          ).copyWith(
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return Colors.red.shade700;
+              }
+              return colorScheme.primary;
+            }),
           ),
-          child: const Text('ADICIONAR', style: TextStyle(color: Colors.white)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.add_shopping_cart,
+                size: 20,
+                color: Colors.white,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'ADICIONAR',
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );
