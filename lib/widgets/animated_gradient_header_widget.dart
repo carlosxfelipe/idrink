@@ -54,45 +54,49 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        return Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.red, Colors.amber],
-              begin: Alignment(-1 + _controller.value, 0),
-              end: Alignment(_controller.value, 0),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.red, Colors.amber],
+                begin: Alignment(-1 + _controller.value, 0),
+                end: Alignment(_controller.value, 0),
+              ),
+              borderRadius: BorderRadius.circular(10),
             ),
-          ),
-          child: Center(
-            child: Text(
-              _texts[_currentIndex],
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                shadows: [
-                  Shadow(
-                    offset: Offset(0.5, 0.5),
-                    blurRadius: 3,
-                    color: Colors.black,
-                  ),
-                  Shadow(
-                    offset: Offset(-0.5, -0.5),
-                    blurRadius: 3,
-                    color: Colors.black,
-                  ),
-                  Shadow(
-                    offset: Offset(0.5, -0.5),
-                    blurRadius: 3,
-                    color: Colors.black,
-                  ),
-                  Shadow(
-                    offset: Offset(-0.5, 0.5),
-                    blurRadius: 3,
-                    color: Colors.black,
-                  ),
-                ],
+            child: Center(
+              child: Text(
+                _texts[_currentIndex],
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(1.5, 1.5),
+                      blurRadius: 3,
+                      color: Colors.black,
+                    ),
+                    Shadow(
+                      offset: Offset(-1.5, -1.5),
+                      blurRadius: 3,
+                      color: Colors.black,
+                    ),
+                    Shadow(
+                      offset: Offset(1.5, -1.5),
+                      blurRadius: 3,
+                      color: Colors.black,
+                    ),
+                    Shadow(
+                      offset: Offset(-1.5, 1.5),
+                      blurRadius: 3,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
