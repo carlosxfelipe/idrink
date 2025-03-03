@@ -47,14 +47,20 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
             Row(
               children: [
                 IconButton(
-                  icon: Icon(Icons.thumb_up_outlined, color: textColor),
+                  icon: const Icon(
+                    Icons.thumb_up_outlined,
+                    color: Colors.green,
+                  ),
                   onPressed: () {
                     debugPrint("Gostei");
                     _hideWidget();
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.thumb_down_outlined, color: textColor),
+                  icon: Icon(
+                    Icons.thumb_down_outlined,
+                    color: Colors.red.shade400,
+                  ),
                   onPressed: () {
                     debugPrint("Não gostei");
                     _hideWidget();
