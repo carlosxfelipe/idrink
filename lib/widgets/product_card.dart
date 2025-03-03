@@ -28,15 +28,14 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textColor = colorScheme.onSurface;
-    final borderColor = colorScheme.primary;
     final iconColor = colorScheme.onSurface;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          border: Border.all(color: borderColor, width: 2),
+          color: isDarkMode ? Colors.grey[900] : Colors.grey[200],
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
