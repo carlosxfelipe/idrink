@@ -13,6 +13,7 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
   late AnimationController _controller;
   late Timer _timer;
   int _currentIndex = 0;
+  double _opacity = 1.0;
 
   final List<String> _texts = [
     "Para você", // Português
@@ -32,12 +33,16 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 4),
     )..repeat(reverse: true);
 
-    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      setState(() {
-        _currentIndex = (_currentIndex + 1) % _texts.length;
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      setState(() => _opacity = 0.0);
+      Future.delayed(const Duration(milliseconds: 500), () {
+        setState(() {
+          _currentIndex = (_currentIndex + 1) % _texts.length;
+          _opacity = 1.0;
+        });
       });
     });
   }
@@ -52,54 +57,44 @@ class _AnimatedGradientHeaderState extends State<AnimatedGradientHeader>
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Container(
             width: double.infinity,
-            height: 60,
+            height: 55,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors:
                     isDarkMode
-                        ? [Colors.blue, Colors.greenAccent]
-                        : [Colors.red, Colors.amber],
+                        ? [Colors.blue.shade700, Colors.tealAccent.shade700]
+                        : [Colors.purple.shade300, Colors.pinkAccent.shade200],
                 begin: Alignment(-1 + _controller.value, 0),
                 end: Alignment(_controller.value, 0),
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withAlpha(25),
+                  blurRadius: 6,
+                  offset: const Offset(0, 4),
+                ),
+              ],
             ),
             child: Center(
-              child: Text(
-                _texts[_currentIndex],
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  shadows: [
-                    Shadow(
-                      offset: Offset(1.5, 1.5),
-                      blurRadius: 3,
-                      color: Colors.black,
-                    ),
-                    Shadow(
-                      offset: Offset(-1.5, -1.5),
-                      blurRadius: 3,
-                      color: Colors.black,
-                    ),
-                    Shadow(
-                      offset: Offset(1.5, -1.5),
-                      blurRadius: 3,
-                      color: Colors.black,
-                    ),
-                    Shadow(
-                      offset: Offset(-1.5, 1.5),
-                      blurRadius: 3,
-                      color: Colors.black,
-                    ),
-                  ],
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: _opacity,
+                child: Text(
+                  _texts[_currentIndex],
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),

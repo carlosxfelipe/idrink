@@ -69,7 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     const CategoriesWidget(),
                     const SizedBox(height: 20),
                     const AnimatedGradientHeader(),
-                    const SizedBox(height: 10),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
