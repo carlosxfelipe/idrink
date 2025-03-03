@@ -74,8 +74,14 @@ class ProductCard extends StatelessWidget {
                           children: [
                             Text(
                               productDetails,
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(color: Colors.grey.shade600),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.copyWith(
+                                color:
+                                    isDarkMode
+                                        ? Colors.grey.shade300
+                                        : Colors.grey.shade600,
+                              ),
                             ),
                             const SizedBox(width: 4),
                             const Icon(
