@@ -171,7 +171,7 @@ class PriceTag extends StatelessWidget {
           decoration: BoxDecoration(
             color:
                 isDarkMode
-                    ? Colors.green.shade900.withValues(alpha: 0.8)
+                    ? Colors.greenAccent.withAlpha(50)
                     : Colors.green.withAlpha(50),
             borderRadius: BorderRadius.circular(24),
           ),
@@ -181,8 +181,7 @@ class PriceTag extends StatelessWidget {
               Icon(
                 Icons.shopping_cart,
                 size: 16,
-                color:
-                    isDarkMode ? Colors.green.shade100 : Colors.green.shade800,
+                color: isDarkMode ? Colors.greenAccent : Colors.green.shade800,
               ),
               const SizedBox(width: 4),
               Text(
@@ -190,9 +189,7 @@ class PriceTag extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                   color:
-                      isDarkMode
-                          ? Colors.green.shade100
-                          : Colors.green.shade800,
+                      isDarkMode ? Colors.greenAccent : Colors.green.shade800,
                 ),
               ),
             ],
